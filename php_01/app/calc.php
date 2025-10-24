@@ -42,8 +42,9 @@ if (empty( $messages )) {
 if (empty ( $messages )) { // gdy brak błędów
 	
 	//konwersja parametrów na int
-	$kwota = intval($kwota);
+	$kwota = floatval($kwota);
 	$opro = intval($opro);
+	$lata = intval($lata);
 	$result = round(($kwota * (1 + $opro/100)) / ($lata * 12), 2);
 }
 
