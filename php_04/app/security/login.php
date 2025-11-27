@@ -66,7 +66,8 @@ if (!validateLogin($form,$messages)) {
 	$smarty->assign('form', $form);
     $smarty->assign('messages', $messages);
 	
-	$smarty->display($conf->root_path.'/templates/login.tpl');
+	$smarty->display($conf->root_path.'/app/security/login.tpl');
+	
 } else { 
 	//ok przekieruj lub "forward" na stronę główną
 	

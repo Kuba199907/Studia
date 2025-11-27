@@ -15,6 +15,7 @@ class CalcCtrl {
 	private $msgs;   //wiadomości dla widoku
 	private $form;   //dane formularza (do obliczeń i dla widoku)
 	private $result; //inne dane dla widoku
+    private $hide_intro;
 
 	/** 
 	 * Konstruktor - inicjalizacja właściwości
@@ -24,6 +25,7 @@ class CalcCtrl {
 		$this->msgs = new Messages();
 		$this->form = new CalcForm();
 		$this->result = new CalcResult();
+        $this->hide_intro = false;
 	}
 
     public function getParams(){
@@ -91,6 +93,9 @@ class CalcCtrl {
         $this->getParams();
 
         if ($this->validate()) {
+
+            $this->hide_intro = true;
+            
             //konwersja parametrów na int oraz float
             $this->form->kwota = floatval($this->form->kwota);
             $this->form->opro = intval($this->form->opro);
@@ -124,6 +129,7 @@ class CalcCtrl {
 		$smarty->assign('page_title','php_04');
 		$smarty->assign('page_heading','Kalkulator pożyczki');
 		$smarty->assign('show_topbar', true);
+        $smarty->assign('hide_intro', $this->hide_intro);
 
 		$smarty->assign('msgs',$this->msgs);
 		$smarty->assign('form',$this->form);
